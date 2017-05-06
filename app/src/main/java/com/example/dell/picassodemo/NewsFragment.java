@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dell.picassodemo.Model.DatabaseModel;
 import com.squareup.picasso.Picasso;
@@ -29,10 +30,9 @@ public class NewsFragment extends Fragment {
 
     ListView listView;
 
-    //List<String> mNewsList;
+    List<String> mNewsList;
 
     List<DatabaseModel> modelList;
-
 
 
     public NewsFragment() {
@@ -48,36 +48,38 @@ public class NewsFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.mylistview);
 
         modelList = new ArrayList<DatabaseModel>();
-//        mNewsList.add("more items 1");
-//        mNewsList.add("more items 2");
-//        mNewsList.add("more items 3");
-//        mNewsList.add("more items 4");
-//        mNewsList.add("more items 5");
-//        mNewsList.add("more items 6");
-//        mNewsList.add("more items 7");
-//        mNewsList.add("more items 8");
-//        mNewsList.add("more items 9");
-//        mNewsList.add("more items 0");
+
+        for (int i = 0; i < 50; i++) {
+            modelList.add(new DatabaseModel("a","fgdsfg"));
+            modelList.add(new DatabaseModel("b","fgdsfg"));
+            modelList.add(new DatabaseModel("c","fgdsfg"));
+            modelList.add(new DatabaseModel("4","fgdsfg"));
+            modelList.add(new DatabaseModel("5","fgdsfg"));
+        }
+
+
+
         listView.setAdapter(new MyAdapter());
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DatabaseModel databaseModel=modelList.get(position);
-                String url=databaseModel.getUrl();
-                openBrowser(url);
+                DatabaseModel databaseModel = modelList.get(position);
+                String name = databaseModel.getName();
+                Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
+                //openBrowser(url);
             }
         });
 
         return view;
     }
 
-    public void openBrowser(String url){
+    public void openBrowser(String url) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
     }
 
 
-    private class MyAdapter extends BaseAdapter{
+    private class MyAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -96,23 +98,21 @@ public class NewsFragment extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view=getActivity().getLayoutInflater().inflate(R.layout.list_row,null);
+            View view = getActivity().getLayoutInflater().inflate(R.layout.list_row, null);
 
-            DatabaseModel databaseModel=modelList.get(position);
+            DatabaseModel databaseModel = modelList.get(position);
 
-            TextView textView= (TextView) view.findViewById(R.id.textView);
+            TextView textView = (TextView) view.findViewById(R.id.textView);
             textView.setText(databaseModel.getName());
 
             //textView.setText(modelList.get(position).getName());
 
-            ImageView imageView= (ImageView) view.findViewById(R.id.imageView);
+            ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 
             Picasso.with(getActivity()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
-            return  view;
+            return view;
         }
     }
-
-
 
 
 }

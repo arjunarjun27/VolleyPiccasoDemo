@@ -1,9 +1,9 @@
 package com.example.dell.picassodemo;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class Splash extends AppCompatActivity {
 
@@ -12,16 +12,16 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-       // Handler handler=new Handler();
+        // Handler handler=new Handler();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                startActivity(new Intent(getApplicationContext(),Main.class));
+                startActivity(new Intent(getApplicationContext(), Main.class));
 
 
             }
-        },3000);
+        }, 3000);
 
     }
 }

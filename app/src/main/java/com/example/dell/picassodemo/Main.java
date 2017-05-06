@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.dell.picassodemo.Model.MApFragment;
-
 public class Main extends AppCompatActivity {
 
     @Override
@@ -33,7 +31,7 @@ public class Main extends AppCompatActivity {
             if (position == 0) {
                 return new NewsFragment();
             } else {
-                return  new MApFragment();
+                return new MApFragment();
             }
 
         }
@@ -49,7 +47,7 @@ public class Main extends AppCompatActivity {
             if (position == 0) {
                 return "NEWS";
             } else {
-                return  "MAP";
+                return "MAP";
             }
         }
     }

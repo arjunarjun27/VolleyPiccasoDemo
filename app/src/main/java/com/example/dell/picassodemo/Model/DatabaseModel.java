@@ -4,6 +4,10 @@ package com.example.dell.picassodemo.Model;
  * Created by Dell on 4/23/2017.
  */
 public class DatabaseModel {
+    public DatabaseModel(String name, String url) {
+        this.name = name;
+        this.url = url;
+    }
 
     public String name;
     public String url;
